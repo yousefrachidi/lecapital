@@ -836,18 +836,30 @@ a.contact__item:hover {
     justify-content: flex-end;
   }
 
-  .hero__title {
-    font-size: clamp(2.4rem, 10vw, 3.5rem);
+  .hero__title { font-size: 2.2rem; line-height: 1.1; }
+  .hero__sub { font-size: 0.88rem; max-width: 100%; }
+  .hero__badge { font-size: 0.72rem; padding: 5px 10px; }
+  .hero__stats { gap: 14px; flex-wrap: nowrap; }
+  .stat__num { font-size: 1.25rem; }
+  .stat__label { font-size: 0.62rem; }
+  .stat__divider { height: 30px; }
+
+  .hero__content { gap: 10px; padding: 0 20px 88px; }
+  .hero__actions {
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
   }
-  .hero__sub { font-size: 0.95rem; max-width: 100%; }
-  .hero__badge { font-size: 0.78rem; padding: 6px 12px; }
-  .hero__stats { gap: 16px; flex-wrap: nowrap; }
-  .stat__num { font-size: 1.4rem; }
-  .stat__label { font-size: 0.68rem; }
+  .hero__actions .btn {
+    flex: 1;
+    justify-content: center;
+    padding: 11px 10px;
+    font-size: 0.82rem;
+  }
 
   .hero__dots {
-    bottom: 68px;
-    left: 24px;
+    bottom: 62px;
+    left: 20px;
     transform: none;
   }
 
@@ -899,9 +911,7 @@ a.contact__item:hover {
 
 @media (max-width: 480px) {
   .collection__grid { grid-template-columns: 1fr; }
-  .hero__actions { flex-direction: column; width: 100%; }
-  .hero__actions .btn { width: 100%; justify-content: center; }
   .cta-final__btns { flex-direction: column; }
   .cta-final__btns .btn { width: 100%; justify-content: center; }
-  .hero__stats { gap: 12px; }
+  .hero__stats { gap: 10px; }
 }
