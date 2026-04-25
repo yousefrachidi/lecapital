@@ -856,8 +856,28 @@ a.contact__item:hover {
   /* ── SECTIONS ── */
   .section { padding: 60px 0; }
 
-  .about__grid { grid-template-columns: 1fr; gap: 40px; }
-  .about__visual { height: 260px; }
+  .about__grid { grid-template-columns: 1fr; gap: 32px; }
+
+  /* Cards en flux naturel côte à côte */
+  .about__visual {
+    height: auto;
+    display: flex;
+    gap: 12px;
+  }
+  .about__frame { display: none; }
+  .about__card {
+    position: static;
+    flex: 1;
+    max-width: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    padding: 20px 14px;
+  }
+  .about__card--1, .about__card--2 {
+    top: auto; left: auto; right: auto; bottom: auto;
+  }
 
   .collection__grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .cat-card { padding: 28px 16px; }
