@@ -182,41 +182,115 @@ img { max-width: 100%; display: block; }
 .hero {
   position: relative;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   overflow: hidden;
+  background: var(--dark);
 }
 
-.hero__bg {
+.hero__bg-dark {
   position: absolute;
   inset: 0;
-  background:
-    url("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1600&q=80") center/cover no-repeat,
-    var(--dark);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1008 100%);
+  z-index: 0;
 }
 
-.hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0,0,0,0.85) 0%,
-    rgba(0,0,0,0.6) 50%,
-    rgba(10,5,0,0.75) 100%
-  );
-}
-
+/* LEFT TEXT */
 .hero__content {
   position: relative;
   z-index: 2;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 120px 24px 80px;
+  padding: 140px 48px 80px 80px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 24px;
+  justify-content: center;
+  gap: 28px;
 }
+
+/* RIGHT PERSON */
+.hero__person {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero__person-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero__person-img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  max-height: 100vh;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  object-position: top center;
+  opacity: 0;
+  transition: opacity 1.2s ease, transform 1.2s ease;
+  filter: drop-shadow(-40px 0 80px rgba(0,0,0,0.6));
+}
+.hero__person-img.active {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* Gradient fade left edge */
+.hero__person::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(to right, var(--dark), transparent);
+  z-index: 3;
+}
+/* Gradient fade bottom */
+.hero__person::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 200px;
+  background: linear-gradient(to top, var(--dark), transparent);
+  z-index: 3;
+}
+
+/* DOTS */
+.hero__dots {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  gap: 10px;
+}
+.hero__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.4);
+  background: transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 0;
+}
+.hero__dot.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: scale(1.4);
+}
+
+/* Keep overlay only in old approach — removed */
+.hero__overlay { display: none; }
 
 .hero__badge {
   display: inline-flex;
@@ -706,6 +780,26 @@ a.contact__item:hover {
 @media (max-width: 768px) {
   .nav__links, .nav__cta { display: none; }
   .nav__burger { display: flex; }
+
+  /* Hero mobile: stack vertically */
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 55vw;
+  }
+  .hero__content {
+    padding: 120px 24px 32px;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+  .hero__stats { justify-content: center; }
+  .hero__person { height: 55vw; }
+  .hero__person-img {
+    height: 100%;
+    max-height: 55vw;
+  }
+  .hero__person::before { width: 60px; }
+  .hero__person::after { height: 80px; }
 
   .section { padding: 70px 0; }
 

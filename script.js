@@ -1,3 +1,35 @@
+// Hero slider
+const slides = document.querySelectorAll('.hero__person-img');
+const dots = document.querySelectorAll('.hero__dot');
+let current = 0;
+let sliderInterval;
+
+function goToSlide(index) {
+  slides[current].classList.remove('active');
+  dots[current].classList.remove('active');
+  current = index;
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
+}
+
+function nextSlide() {
+  goToSlide((current + 1) % slides.length);
+}
+
+function startSlider() {
+  sliderInterval = setInterval(nextSlide, 4500);
+}
+
+dots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    clearInterval(sliderInterval);
+    goToSlide(parseInt(dot.dataset.index));
+    startSlider();
+  });
+});
+
+startSlider();
+
 // Nav scroll effect
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {

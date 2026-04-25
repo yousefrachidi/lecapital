@@ -37,9 +37,9 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <div class="hero__bg">
-      <div class="hero__overlay"></div>
-    </div>
+    <div class="hero__bg-dark"></div>
+
+    <!-- LEFT: text -->
     <div class="hero__content">
       <span class="hero__badge">🇹🇷 Importation Officielle Turque</span>
       <h1 class="hero__title">L'Élégance<br /><span>Masculine</span></h1>
@@ -56,9 +56,22 @@
         <div class="stat"><span class="stat__num">100%</span><span class="stat__label">Qualité Turque</span></div>
       </div>
     </div>
-    <div class="hero__scroll">
-      <span></span>
+
+    <!-- RIGHT: person slider -->
+    <div class="hero__person">
+      <div class="hero__person-track">
+        <img src="img1.jpg" alt="Le Capitaine look 1" class="hero__person-img active" />
+        <img src="img2.jpg" alt="Le Capitaine look 2" class="hero__person-img" />
+        <img src="img3.jpg" alt="Le Capitaine look 3" class="hero__person-img" />
+      </div>
+      <div class="hero__dots">
+        <button class="hero__dot active" data-index="0" aria-label="Slide 1"></button>
+        <button class="hero__dot" data-index="1" aria-label="Slide 2"></button>
+        <button class="hero__dot" data-index="2" aria-label="Slide 3"></button>
+      </div>
     </div>
+
+    <div class="hero__scroll"><span></span></div>
   </section>
 
   <!-- BANNER -->
